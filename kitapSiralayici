@@ -1,0 +1,53 @@
+package patikaOdev.kitapSiralayici;
+
+import java.util.TreeSet;
+import java.util.Comparator;
+
+public class KitapSiralayici {
+
+	public static void main(String[] args) {
+		TreeSet<Book> books = new TreeSet<Book>();
+		Book b1 = new Book("Sefiller", 1500, "Victor Hugo", "1861");
+		Book b2 = new Book("Yüzüklerin Efendisi", 1346, "J. R. R. Tolkien", "1954");
+		Book b3 = new Book("Seker Portakalı", 182, "José Mauro de Vasconcelos", "1968");
+		Book b4 = new Book("Suç ve Ceza ", 705, "Fyodor Dostoyevski", "1866");
+		Book b5 = new Book("Vadideki Zambak", 328, "Balzac", "1835");
+		books.add(b1);
+		books.add(b2);
+		books.add(b3);
+		books.add(b4);
+		books.add(b5);
+
+		for (Book book : books) {
+			System.out.println("Kitap ismi: " + book.getBookName());
+			System.out.println("Sayfa sayısı: " + book.getPageNumber());
+			System.out.println("Yazar: " + book.getAuthor());
+			System.out.println("Yayın yılı: " + book.getDate());
+			System.out.println("-------------------");
+		}
+		TreeSet<Book> book = new TreeSet<>(new Comparator<Book>() {
+			@Override
+			public int compare(Book o1, Book o2) {
+				return o1.getPageNumber() - o2.getPageNumber();
+			}
+		});
+		book.add(b1);
+		book.add(b2);
+		book.add(b3);
+		book.add(b4);
+		book.add(b5);
+		
+		
+		System.out.println("Sayfa sayısına göre sıralama");
+		System.out.println("##############################");
+		for (Book bk : book) {
+			System.out.println("Kitap ismi: " + bk.getBookName());
+			System.out.println("Sayfa sayısı: " + bk.getPageNumber());
+			System.out.println("Yazar: " + bk.getAuthor());
+			System.out.println("Yayın yılı: " + bk.getDate());
+			System.out.println("-------------------");
+		}
+
+	}
+
+}
